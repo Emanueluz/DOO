@@ -60,12 +60,12 @@ public class main <Tipo extends Comparable<Tipo>>{
 				}
 				else if(menu==4){
 					System.out.println("digite a matricula que quer add: ");
-					matricula=scanner.nextLine();
+					matricula=scanner2.nextLine();
 					System.out.println("digite o nome do aluno que quer add: ");
-					nome= scanner.nextLine();
+					nome= scanner3.nextLine();
 					System.out.println("digite a nota do aluno que quer add: ");
 					nota= scanner4.nextInt();
-					novo_aluno.createAluno(novo_aluno, matricula, nome, nota);
+					 novo_aluno=new Aluno (matricula, nome, nota);
 					arvore.addNode(novo_aluno);
 
 
