@@ -16,11 +16,16 @@ public class ArvoreBinaria<Tipo extends Comparable<Tipo>>{
         }
         if((leaf.getValor().getMatricula()).compareTo(aluno.getMatricula()) > 0){
             leaf.noEsquerdo = createNode(leaf.getEsquerdo(),aluno);
+            System.out.println("no esquerdo "+aluno.getNome() + " filho de "+ leaf.getValor().getMatricula());
         }
         else if((leaf.getValor().getMatricula()).compareTo(aluno.getMatricula()) < 0){
-            leaf.noDireito = createNode(leaf.getEsquerdo(),aluno);
+            leaf.noDireito = createNode(leaf.getDireito(),aluno);
+            System.out.println("no direito "+aluno.getNome()+ " filho de "+ leaf.getValor().getMatricula());
+
         }
         else{
+        	
+        	
             return leaf;
         }
         return leaf;
@@ -79,12 +84,14 @@ public class ArvoreBinaria<Tipo extends Comparable<Tipo>>{
     }
     //Função para calcular a altura da árvore
     public int heightTree(Node<Tipo> leaf){
-        if(leaf == null){
+    	Node aux =new Node(null);
+    	aux= leaf;
+        if(leaf == null || leaf.getValor()==null){
             return 0;
         }
         else{
-            int heightEsquerda = heightTree(raiz.getEsquerdo());
-            int heightDireita = heightTree(raiz.getDireito());
+        	int heightEsquerda = heightTree(aux.getEsquerdo());
+            int heightDireita = heightTree(aux.getDireito());
             if(heightEsquerda > heightDireita){
                 return heightEsquerda+1;
             }
@@ -136,7 +143,8 @@ public class ArvoreBinaria<Tipo extends Comparable<Tipo>>{
             Node<Tipo> maxEsquerda = leaf.getEsquerdo();
             Node<Tipo> maxDireita = leaf.getDireito();
             if(max.getValor().getMatricula().compareTo(maxEsquerda.getValor().getMatricula()) < 0){
-                max = maxEsquerda;
+                
+            	max = maxEsquerda;
             }
             else if(max.getValor().getMatricula().compareTo(maxDireita.getValor().getMatricula()) < 0){
                 max = maxDireita;

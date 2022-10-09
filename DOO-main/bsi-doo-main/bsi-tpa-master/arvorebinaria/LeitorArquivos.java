@@ -17,19 +17,19 @@ import java.io.IOException;
         BufferedReader buffRead =new BufferedReader(new FileReader(path));
         linha = buffRead.readLine();
         int numero_matriculas = Integer.parseInt(linha);
-        System.out.println(numero_matriculas-1);
+        System.out.println(numero_matriculas);
         String[] obj;
-        for (int i=0;i <=numero_matriculas-2;i++){
+        for (int i=0;i <=numero_matriculas-1;i++){
             linha = buffRead.readLine();
             obj = linha.split(";");
             aluno=new Aluno(obj[0],obj[1],obj[2]); 
+            
             arvore.addNode(aluno );
-            System.out.println("Aluno :"+ obj[0]+"--"+obj[1]+"--"+obj[2]+"--");
-
+ 
         }
         buffRead.close();
         long tempo = System.currentTimeMillis() - tempoInicial;
-        System.out.println("O método foi executado em " +tempo);
+        System.out.println("O método foi executado em " +tempo+" ms");
         return arvore;
     }
 }
